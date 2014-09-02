@@ -11,7 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827205312) do
+ActiveRecord::Schema.define(version: 20140830155722) do
+
+  create_table "participants", force: true do |t|
+    t.string   "email"
+    t.integer  "pin"
+    t.string   "name"
+    t.boolean  "leader"
+    t.float    "current_lat",  limit: 24
+    t.float    "current_long", limit: 24
+    t.datetime "depart_at"
+    t.datetime "arrive_at"
+    t.datetime "join_at"
+    t.datetime "quit_at"
+    t.datetime "checkin_at"
+    t.string   "status"
+    t.integer  "trip_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "participants", ["trip_id"], name: "index_participants_on_trip_id", using: :btree
+
+  create_table "trips", force: true do |t|
+    t.string   "name"
+    t.text     "notes"
+    t.float    "dest_lat",             limit: 24
+    t.float    "dest_long",            limit: 24
+    t.datetime "depart_at"
+    t.datetime "arrive_at"
+    t.datetime "start_at"
+    t.datetime "finish_at"
+    t.string   "authentication_token"
+    t.integer  "pin"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "trips", ["authentication_token"], name: "index_trips_on_authentication_token", using: :btree
+  add_index "trips", ["user_id"], name: "index_trips_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -32,9 +71,10 @@ ActiveRecord::Schema.define(version: 20140827205312) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.integer  "role"
+    t.string   "authentication_token"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

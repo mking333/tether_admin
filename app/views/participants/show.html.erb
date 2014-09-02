@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @participant.email %>
+</p>
+
+<p>
+  <strong>Pin:</strong>
+  <%= @participant.pin %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @participant.name %>
+</p>
+
+<p>
+  <strong>Leader:</strong>
+  <%= @participant.leader %>
+</p>
+
+<p>
+  <strong>Current lat:</strong>
+  <%= @participant.current_lat %>
+</p>
+
+<p>
+  <strong>Current long:</strong>
+  <%= @participant.current_long %>
+</p>
+
+<p>
+  <strong>Depart at:</strong>
+  <%= @participant.depart_at %>
+</p>
+
+<p>
+  <strong>Arrive at:</strong>
+  <%= @participant.arrive_at %>
+</p>
+
+<p>
+  <strong>Join at:</strong>
+  <%= @participant.join_at %>
+</p>
+
+<p>
+  <strong>Quit at:</strong>
+  <%= @participant.quit_at %>
+</p>
+
+<p>
+  <strong>Checkin at:</strong>
+  <%= @participant.checkin_at %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @participant.status %>
+</p>
+
+<p>
+  <strong>Trip:</strong>
+  <%= @participant.trip.name %>
+</p>
+
+<%= link_to 'Edit', edit_participant_path(@participant) %> |
+<%= link_to 'Back', trips_path %>

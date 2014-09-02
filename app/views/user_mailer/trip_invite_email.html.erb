@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<% if @participant.leader %>
+    <h3>Hello <%= @participant.name %>, You've created a trip with TripTether!</h3>
+<% else %>
+    <h3>Hello <%= @participant.name %>, You've been invited on a trip with TripTether!</h3>
+<% end %>
+<p>
+  To join the trip open the TripTether app and enter these settings:
+</p>
+<p>
+    Trip ID: <%= @participant.trip.id %><br>
+    PIN:     <%= @participant.trip.pin %><br>
+
+    eMail:   <%= @participant.email %>
+</p>
+<p>Thanks for taking a trip with TripTether!</p>
+</body>
+</html>

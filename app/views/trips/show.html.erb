@@ -1,0 +1,98 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @trip.name %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @trip.notes %>
+</p>
+
+<p>
+  <strong>Dest lat:</strong>
+  <%= @trip.dest_lat %>
+</p>
+
+<p>
+  <strong>Dest long:</strong>
+  <%= @trip.dest_long %>
+</p>
+
+<p>
+  <strong>Departing at:</strong>
+  <%= @trip.depart_at %>
+</p>
+
+<p>
+  <strong>Arriving at:</strong>
+  <%= @trip.arrive_at %>
+</p>
+
+<p>
+  <strong>Started at:</strong>
+  <%= @trip.start_at %>
+</p>
+
+<p>
+  <strong>Finished at:</strong>
+  <%= @trip.finish_at %>
+</p>
+
+<p>
+  <strong>Pin:</strong>
+  <%= @trip.pin %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @trip.user.name %>
+</p>
+
+<%= link_to 'Edit', edit_trip_path(@trip) %> |
+<%= link_to 'Back', trips_path %>
+
+<h3>Participants</h3>
+
+<table>
+  <thead>
+  <tr>
+    <th>Email</th>
+    <th>Pin</th>
+    <th>Name</th>
+    <th>Leader</th>
+    <th>Lat</th>
+    <th>Long</th>
+    <th>Departing at</th>
+    <th>Arriving at</th>
+    <th>Joined at</th>
+    <th>Quit at</th>
+    <th>Checkin at</th>
+    <th>Status</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @participants.each do |participant| %>
+      <tr>
+        <td><%= participant.email %></td>
+        <td><%= participant.pin %></td>
+        <td><%= participant.name %></td>
+        <td><%= participant.leader %></td>
+        <td><%= participant.current_lat %></td>
+        <td><%= participant.current_long %></td>
+        <td><%= participant.depart_at %></td>
+        <td><%= participant.arrive_at %></td>
+        <td><%= participant.join_at %></td>
+        <td><%= participant.quit_at %></td>
+        <td><%= participant.checkin_at %></td>
+        <td><%= participant.status %></td>
+        <td><%= link_to 'Show', participant %></td>
+        <td><%= link_to 'Edit', edit_participant_path(participant) %></td>
+        <td><%= link_to 'Destroy', participant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

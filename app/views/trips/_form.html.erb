@@ -1,0 +1,19 @@
+<%= simple_form_for(@trip) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :notes %>
+    <%= f.input :dest_lat %>
+    <%= f.input :dest_long %>
+    <%= f.input :depart_at %>
+    <%= f.input :arrive_at %>
+    <%= f.input :start_at %>
+    <%= f.input :finish_at %>
+    <%= f.input :pin %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
