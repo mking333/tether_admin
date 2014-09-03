@@ -16,6 +16,7 @@ gem 'figaro', '>= 1.0.0.rc1'
 gem 'high_voltage'
 gem 'pundit'
 gem 'simple_form'
+gem 'will_paginate', '~> 3.0.5'
 gem 'therubyracer', :platform=>:ruby
 group :development do
   gem 'quiet_assets'

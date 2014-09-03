@@ -6,7 +6,8 @@ class ParticipantsController < ApplicationController
   # GET /participants
   # GET /participants.json
   def index
-    @participants = Participant.all
+    #@participants = Participant.all
+    @participants = Participant.paginate(:page => params[:page], :per_page => 12).order('id DESC')
     authorize Participant
   end
 
