@@ -8,6 +8,7 @@ class ParticipantsController < ApplicationController
   def index
     #@participants = Participant.all
     @participants = Participant.paginate(:page => params[:page], :per_page => 12).order('id DESC')
+    @trip_count = Participant.distinct.count('trip_id')
     authorize Participant
   end
 

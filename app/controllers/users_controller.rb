@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   after_action :verify_authorized
 
   def index
-    @users = User.all
+    # @users = User.all
+    @users = User.paginate(:page => params[:page], :per_page => 12).order('email DESC')
     authorize User
   end
 
