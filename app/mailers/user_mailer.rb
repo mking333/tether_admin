@@ -3,6 +3,6 @@ class UserMailer < ActionMailer::Base
 
   def trip_invite_email(participant)
     @participant = participant
-    mail(to: @participant.email, subject: 'You have been invited on a trip with TripTether!')
+    mail(to: @participant.email, subject: 'TripTether New Trip!')
   end
 end

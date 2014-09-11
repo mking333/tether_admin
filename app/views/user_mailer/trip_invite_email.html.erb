@@ -5,19 +5,15 @@
 </head>
 <body>
 <% if @participant.leader %>
-    <h3>Hello <%= @participant.name %>, You've created a trip with TripTether!</h3>
+    <p>Hello <%= @participant.email %>, you've created a trip with TripTether!</p>
 <% else %>
-    <h3>Hello <%= @participant.name %>, You've been invited on a trip with TripTether!</h3>
+    <p>Hello <%= @participant.email %>, you've been invited on a trip with TripTether!</p>
 <% end %>
-<p>
-  To join the trip open the TripTether app and enter these settings:
-</p>
-<p>
-    Trip ID: <%= @participant.trip.id %><br>
-    PIN:     <%= @participant.trip.pin %><br>
 
-    eMail:   <%= @participant.email %>
-</p>
-<p>Thanks for taking a trip with TripTether!</p>
+<p>To join the trip open the TripTether app and enter these settings:</p>
+<p>&nbsp;&nbsp;Trip ID: <%= @participant.trip.id %><br>
+&nbsp;&nbsp;PIN: <%= @participant.trip.pin %></p>
+
+<p><i>Thanks for taking a trip with TripTether!</i></p>
 </body>
 </html>
