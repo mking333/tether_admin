@@ -154,12 +154,19 @@ class ApisController < ApplicationController
     if @user
       if @user.valid_password?(user_password)
         @user.name = user_name
-	@user.authentication_token ||= Devise.friendly_token
+	      @user.authentication_token ||= Devise.friendly_token
         @user.save
 
         @result = "success"
         render
       else
+        @user.bad_login_count = @user.bad_login_count ? @user.bad_login_count + 1 : 1;
+        @user.save
+
+        if @user.bad_login_count % 3 == 0
+          @user.send_reset_password_instructions
+        end
+
         @result = "password error"
         render :sign_in_error
       end

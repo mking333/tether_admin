@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140830155722) do
+ActiveRecord::Schema.define(version: 20140911144131) do
 
   create_table "participants", force: true do |t|
     t.string   "email"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20140830155722) do
     t.string   "unconfirmed_email"
     t.integer  "role"
     t.string   "authentication_token"
+    t.integer  "bad_login_count"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
