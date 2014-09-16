@@ -1,45 +1,43 @@
-<h3>Trips: <%= Trip.count %> created</h3>
+<div class="container">
+    <div class="row">
+        <h3>Trips: <%= Trip.count %> created</h3>
+        <div class="column">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Notes</th>
+                  <th>Dest lat</th>
+                  <th>Dest long</th>
+                  <th>Departing at</th>
+                  <th>Arriving at</th>
+                  <th>Started at</th>
+                  <th>Finished at</th>
+                  <th>Pin</th>
+                  <th>User</th>
+                </tr>
+              </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Notes</th>
-      <th>Dest lat</th>
-      <th>Dest long</th>
-      <th>Departing at</th>
-      <th>Arriving at</th>
-      <th>Started at</th>
-      <th>Finished at</th>
-      <th>Pin</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @trips.each do |trip| %>
-      <tr>
-        <td><%= trip.name %></td>
-        <td><%= trip.notes %></td>
-        <td><%= trip.dest_lat %></td>
-        <td><%= trip.dest_long %></td>
-        <td><%= trip.depart_at %></td>
-        <td><%= trip.arrive_at %></td>
-        <td><%= trip.start_at %></td>
-        <td><%= trip.finish_at %></td>
-        <td><%= trip.pin %></td>
-        <td><%= trip.user.name %></td>
-        <td><%= link_to 'Show', trip %></td>
-        <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
-        <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<%= will_paginate @trips %>
-<br>
-
-<%= link_to 'New Trip', new_trip_path %>
+              <tbody>
+                <% @trips.each do |trip| %>
+                  <tr>
+                    <td><%= link_to trip.name, trip %></td>
+                    <td><%= trip.notes[0..10] %><%= trip.notes.length > 10 ? '...' : '' %></td>
+                    <td><%= trip.dest_lat %></td>
+                    <td><%= trip.dest_long %></td>
+                    <td><%= trip.depart_at %></td>
+                    <td><%= trip.arrive_at %></td>
+                    <td><%= trip.start_at %></td>
+                    <td><%= trip.finish_at %></td>
+                    <td><%= trip.pin %></td>
+                    <td><%= trip.user.name %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+        </div>
+    </div>
+    <%= will_paginate @trips %>
+    <br>
+    <%= link_to 'New Trip', new_trip_path %>
+</div>
