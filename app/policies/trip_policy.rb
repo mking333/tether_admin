@@ -18,6 +18,10 @@ class TripPolicy
     @current_user.admin?
   end
 
+  def search?
+    show?
+  end
+
   def create?
     new?
   end

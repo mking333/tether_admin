@@ -5,6 +5,7 @@
             <table class="table">
               <thead>
                 <tr>
+                  <th>Trip ID</th>
                   <th>Name</th>
                   <th>Notes</th>
                   <th>Dest lat</th>
@@ -21,6 +22,7 @@
               <tbody>
                 <% @trips.each do |trip| %>
                   <tr>
+                    <td><%= trip.id %></td>
                     <td><%= link_to trip.name, trip %></td>
                     <td><%= trip.notes[0..10] %><%= trip.notes.length > 10 ? '...' : '' %></td>
                     <td><%= trip.dest_lat %></td>
@@ -40,4 +42,9 @@
     <%= will_paginate @trips %>
     <br>
     <%= link_to 'New Trip', new_trip_path %>
+    <%= form_tag("/search", method: "post") do %>
+        <%= label_tag(:tid, "Search for Trip ID:") %>
+        <%= number_field_tag(:tid) %>
+        <%= submit_tag("Search") %>
+    <% end %>
 </div>

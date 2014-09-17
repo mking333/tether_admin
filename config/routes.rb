@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :participants
 
   resources :trips
+  post 'search', :to => 'trips#search'
 
   root to: 'visitors#index'
   devise_for :users

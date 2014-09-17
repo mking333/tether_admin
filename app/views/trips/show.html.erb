@@ -3,6 +3,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Trip ID:</strong>
+  <%= @trip.id %>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @trip.name %>
 </p>
@@ -98,4 +103,6 @@
         </table>
       </div>
     </div>
+  </div>
+  <%= link_to 'New Participant', new_participant_path %>
 </div>

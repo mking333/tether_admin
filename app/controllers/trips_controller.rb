@@ -17,6 +17,17 @@ class TripsController < ApplicationController
     @participants = @trip.participants
   end
 
+  def search
+    @trip = Trip.find params[:tid]
+    if @trip
+      authorize @trip
+      @participants = @trip.participants
+      render action: 'show'
+    else
+      render action: 'index'
+    end
+  end
+
   # GET /trips/new
   def new
     @trip = Trip.new
