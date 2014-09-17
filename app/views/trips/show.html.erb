@@ -105,5 +105,6 @@
       </div>
     </div>
   </div>
-  <%= link_to 'New Participant', new_participant_path %>
+  <%= link_to 'New Participant', new_participant_path(:trip_id => @trip.id)
+  %>
 </div>

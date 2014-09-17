@@ -21,6 +21,9 @@ class ParticipantsController < ApplicationController
   def new
     @participant = Participant.new
     authorize @participant
+    if params[:trip_id]
+      @participant.trip_id = params[:trip_id]
+    end
   end
 
   # GET /participants/1/edit
