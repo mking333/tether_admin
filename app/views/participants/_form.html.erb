@@ -10,9 +10,9 @@
     <%= f.input :current_long %>
     <%= f.input :depart_at %>
     <%= f.input :arrive_at %>
-    <%= f.input :join_at %>
-    <%= f.input :quit_at %>
-    <%= f.input :checkin_at %>
+    <%= f.input :join_at, :include_blank => true %>
+    <%= f.input :quit_at, :include_blank => true %>
+    <%= f.input :checkin_at, :include_blank => true %>
     <%= f.input :status %>
     <%= f.association :trip %>
   </div>
