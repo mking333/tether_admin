@@ -153,8 +153,10 @@ class ApisController < ApplicationController
     @user = User.where(["email = ? and confirmed_at is not null", user_email]).first
     if @user
       if @user.valid_password?(user_password)
-        @user.name = user_name
-	      @user.authentication_token ||= Devise.friendly_token
+        if user_name.length > 0
+          @user.name = user_name
+        end
+        @user.authentication_token ||= Devise.friendly_token
         @user.save
 
         @result = "success"
@@ -195,7 +197,11 @@ class ApisController < ApplicationController
       else
         @user = User.new
         @user.email = user_email
-        @user.name = user_name
+        if user_name.length > 0
+          @user.name = user_name
+        else
+          @user.name = user_email.split('@')[0]
+        end
         @user.password = user_password
         @user.password_confirmation = user_confirmation
         @user.save
