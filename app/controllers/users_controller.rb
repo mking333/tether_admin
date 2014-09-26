@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     # @users = User.all
-    @users = User.paginate(:page => params[:page], :per_page => 12).order('email DESC')
+    @users = User.paginate(:page => params[:page], :per_page => 12).order('email')
     authorize User
   end
 
