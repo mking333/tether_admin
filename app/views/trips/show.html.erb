@@ -54,7 +54,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @trip.user.name %>
+  <%= @trip.user.try(:name) %>
 </p>
 
 <%= link_to 'Edit', edit_trip_path(@trip) %> |

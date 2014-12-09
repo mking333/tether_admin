@@ -32,7 +32,7 @@
                     <td><%= trip.start_at %></td>
                     <td><%= trip.finish_at %></td>
                     <td><%= trip.pin %></td>
-                    <td><%= trip.user.name %></td>
+                    <td><%= trip.user.try(:name) %></td>
                   </tr>
                 <% end %>
               </tbody>
