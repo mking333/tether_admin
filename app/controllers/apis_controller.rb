@@ -204,6 +204,7 @@ class ApisController < ApplicationController
         end
         @user.password = user_password
         @user.password_confirmation = user_confirmation
+        @user.authentication_token ||= Devise.friendly_token
         @user.save
 
         @result = "success"
