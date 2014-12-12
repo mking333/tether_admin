@@ -150,7 +150,8 @@ class ApisController < ApplicationController
     user_password = params[:pw]
     user_name = params[:name]
 
-    @user = User.where(["email = ? and confirmed_at is not null", user_email]).first
+    # and confirmed_at is not null - removed to allow unconfirmed users.
+    @user = User.where(["email = ?", user_email]).first
     if @user
       if @user.valid_password?(user_password)
         if user_name.length > 0
@@ -159,8 +160,23 @@ class ApisController < ApplicationController
         @user.authentication_token ||= Devise.friendly_token
         @user.save
 
-        @result = "success"
-        render
+        if @user.confirmed_at.nil?
+          @user.bad_login_count = @user.bad_login_count ? @user.bad_login_count + 1 : 1;
+          @user.save
+
+          @user.send_confirmation_instructions
+
+          if @user.bad_login_count > 5
+            @result = "confirmation error"
+            render :sign_in_error
+          else
+            @result = "success"
+            render
+          end
+        else
+          @result = "success"
+          render
+        end
       else
         @user.bad_login_count = @user.bad_login_count ? @user.bad_login_count + 1 : 1;
         @user.save
@@ -229,7 +245,7 @@ class ApisController < ApplicationController
 
     @user = User.find(params[:id])
     if @user
-      if @user.email == user_email && @user.authentication_token == user_token
+      if @user.email == user_email.downcase && @user.authentication_token == user_token
         @new_trip = Trip.new
         ' set the user id, hope it works '
         @new_trip.user_id = @user.id
