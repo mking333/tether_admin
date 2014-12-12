@@ -2,6 +2,7 @@ json.trip do
     json.result @result
     json.trip_id @trip.id
     json.name @trip.name
+    json.location @trip.location
     json.user @trip.user ? @trip.user.name : ""
     json.notes @trip.notes
     json.dest_lat @trip.dest_lat

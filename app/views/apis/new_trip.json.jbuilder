@@ -2,6 +2,7 @@ json.trip do
     json.result @result
     json.trip_id @new_trip.id
     json.name @new_trip.name
+    json.location @new_trip.location
     json.token @new_trip.authentication_token
     json.pin @new_trip.pin
     json.user @new_trip.user.name ? @new_trip.user.name : @new_trip.user.email

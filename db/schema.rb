@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140911144131) do
+ActiveRecord::Schema.define(version: 20141212211351) do
 
   create_table "participants", force: true do |t|
     t.string   "email"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20140911144131) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "location"
   end
 
   add_index "trips", ["authentication_token"], name: "index_trips_on_authentication_token", using: :btree

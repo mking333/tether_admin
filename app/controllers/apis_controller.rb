@@ -250,6 +250,7 @@ class ApisController < ApplicationController
         ' set the user id, hope it works '
         @new_trip.user_id = @user.id
         @new_trip.name = trip_name
+        @new_trip.location = trip_location
         @new_trip.notes = trip_notes
         @new_trip.dest_lat = trip_lat
         @new_trip.dest_long = trip_long

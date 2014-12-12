@@ -2,6 +2,7 @@ json.trip do
   json.result @result
   json.trip_id 0
   json.name "error"
+  json.name "error"
   json.token "error"
   json.user "error"
   json.notes ""
